@@ -1,7 +1,3 @@
-"""
-TODO: implementar método para validar a entrada de dados (date, pages) - Implementando
-"""
-
 import db
 import methods as mtd
 
@@ -41,23 +37,35 @@ def receiveOption():
     print("\n1 - Dashboard\n"
           "2 - Record reading\n"
           "3 - Exit\n")
-    option = int(input("Enter an option: "))
-    validateOption(option)
-
-# Method to validate user option
-def validateOption(option):
-    while option < 1 or option > 3:
-        print("Invalid option!\n")
-        option = int(input("Enter an option: "))
-    processOption(option)
+    option = input("Enter an option: ")
+    validatedOption = mtd.validateOption(option)
+    if validatedOption:
+        option = int(option)
+        processOption(option)
+    else:
+        print("\nInvalid option!")
+        receiveOption()
 
 # Method to receive a record
 def receiveRecord():
-    date = input("\nDate: ")
-    mtd.validateDate(date)
+    date = input("\nDate (dd/mm/yyyy): ")
+    isValidate = mtd.validateDate(date)
+    while isValidate != True:
+        print("\nInvalid date. Type again.")
+        date = input("Date (dd/mm/yyyy): ")
+        isValidate = mtd.validateDate(date)
     pages = input("Pages: ")
-    readRecord = date + '\t' + pages + "\n"
-    db.write(readRecord)
+    isInt = mtd.isInt(pages)
+    if isInt:
+        readRecord = date + '\t' + pages + "\n"
+        db.write(readRecord)
+    else:
+        while isInt != True:
+            print("\nInvalid number of pages. Type again.")
+            pages = input("Pages: ")
+            isInt = mtd.isInt(pages)
+        readRecord = date + '\t' + pages + "\n"
+        db.write(readRecord)
 
 main()
 
