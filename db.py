@@ -1,31 +1,24 @@
-# Constants
-FILE_NAME = 'db.txt'
-MODE = 'a'
+import globals
 
-## Manipulation methods
+MODE = ''
 
 # Read the file
 def read():
     MODE = 'r'
-    with open(FILE_NAME, MODE, encoding='utf8') as db:
-        print(db.read())
-
-def readWithLine():
-    MODE = 'r'
-    with open(FILE_NAME, MODE, encoding='utf8') as db:
+    with open(globals.FILE_NAME, MODE, encoding='utf8') as db:
         print(db.read())
 
 # Write in file
 def write(str):
     MODE = 'a'
-    with open(FILE_NAME, MODE, encoding='utf8') as db:
+    with open(globals.FILE_NAME, MODE, encoding='utf8') as db:
         db.write(str)
 
 # Count the number of records
 def countLines():
     MODE = 'r'
     count = 0
-    with open(FILE_NAME, MODE, encoding='utf8') as db:
+    with open(globals.FILE_NAME, MODE, encoding='utf8') as db:
         lines = db.readlines()
         for line in lines:
             if not line.startswith('\n') and not line.startswith('D'):
@@ -36,7 +29,7 @@ def countLines():
 def sumPages():
     MODE = 'r'
     sum = 0
-    with open(FILE_NAME, MODE, encoding='utf8') as db:
+    with open(globals.FILE_NAME, MODE, encoding='utf8') as db:
         lines = db.readlines()
         for line in lines:
             if not line.startswith('\n') and not line.startswith('D'):
@@ -50,6 +43,6 @@ def sumPages():
 def avgPages():
     MODE = 'r'
     avg = 0
-    with open(FILE_NAME, MODE, encoding='utf8') as db:
+    with open(globals.FILE_NAME, MODE, encoding='utf8') as db:
         lines = db.readlines()
         return sumPages() / countLines()

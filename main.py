@@ -1,8 +1,6 @@
 import db
 import methods as mtd
-
-# Constants
-TOTAL_PAGES = 237
+import globals
 
 # Method main
 def main():
@@ -25,9 +23,9 @@ def processOption(option):
 def dashboard():
     print("\nDashboard ******************************************************")
     print('\nRecords: ', db.countLines())
-    print('Total pages: ', TOTAL_PAGES)
+    print('Total pages: ', globals.TOTAL_PAGES)
     print('Pages read: ', db.sumPages())
-    print(f'Reading percentage: {round(mtd.getReadPercentage(db.sumPages(), TOTAL_PAGES), 2)} %')
+    print(f'Reading percentage: {round(mtd.getReadPercentage(db.sumPages(), globals.TOTAL_PAGES), 2)} %')
     print('Reading average: ', round(db.avgPages(), 2))
     print("\n****************************************************************\n")
 
