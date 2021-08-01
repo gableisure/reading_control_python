@@ -15,12 +15,12 @@
 
 <h5>Telas do console</h5>
 
-[imagem menu do sistema]
+![Screen Menu do Sistema](images/img-menu-sistema.PNG)
 
-[imagem do registro]
+![Screen Registro de Leitura](images/img_registro.PNG)
 
-[imagem do dashboard]
+![Screen Dashboard do Sistema](images/img_dashboard_sistema.PNG)
 
 <h5>Dashboard Power BI</h5>
 
-[Imagem dashboard]
+![Screen Dashboard do Power BI](images/img_dashboard_powerbi.PNG)
